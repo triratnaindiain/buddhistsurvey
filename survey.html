@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Intro Page</title>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&family=Kalam:wght@400;700&display=swap');
+
+    body {
+        margin: 0;
+        font-family: 'Noto Sans Devanagari', Arial, sans-serif;
+        overflow: hidden;
+        background: black;
+        color: white;
+    }
+
+    /* Main Section */
+    .container {
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        transition: opacity 1s ease;
+    }
+
+    /* Background Image Animation */
+    .bg-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        animation: zoom 8s infinite alternate ease-in-out;
+    }
+
+    @keyframes zoom {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.1); }
+    }
+
+    /* Glass Info Box */
+    .info-box {
+        position: absolute;
+        top: 50%;
+        left: 8%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.15);
+        padding: 40px;
+        border-radius: 20px;
+        backdrop-filter: blur(12px);
+        color: white;
+        max-width: 400px;
+        box-shadow: 0 0 30px rgba(0,0,0,0.4);
+        font-family: 'Kalam', 'Noto Sans Devanagari', sans-serif;
+    }
+
+    .info-box h1 {
+        margin-top: 0;
+        font-size: 36px;
+        font-weight: 700;
+    }
+
+    .info-box p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    /* Transparent Button */
+    .btn {
+        padding: 12px 25px;
+        border: 2px solid white;
+        background: transparent;
+        color: white;
+        cursor: pointer;
+        border-radius: 30px;
+        font-size: 16px;
+        transition: 0.3s;
+        margin-top: 20px;
+        font-family: 'Kalam', 'Noto Sans Devanagari', sans-serif;
+    }
+
+    .btn:hover {
+        background: white;
+        color: black;
+    }
+
+    /* Form Section */
+    .form-section {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        background: rgba(0,0,0,0.85);
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    iframe {
+        width: 80%;
+        height: 80%;
+        border-radius: 20px;
+        border: none;
+        background: white;
+    }
+
+    /* Second Image */
+    .second-image {
+        display: none;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Thank You Box in Hindi */
+    .thank-you-box {
+        position: absolute;
+        top: 50%;
+        left: 8%;
+        transform: translateY(-50%);
+        background: rgba(255 255 255 / 0.15);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 20px;
+        color: white;
+        max-width: 400px;
+        box-shadow: 0 0 30px rgba(0,0,0,0.4);
+        font-family: 'Kalam', 'Noto Sans Devanagari', sans-serif;
+        z-index: 2;
+    }
+
+    .thank-you-box h1 {
+        font-size: 36px;
+        margin: 0 0 15px 0;
+    }
+
+    .thank-you-box p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+</style>
+
+</head>
+<body>
+
+<!-- FIRST SECTION -->
+<div class="container" id="introSection">
+    <img src="buddha1.jpg" class="bg-image">
+
+    <div class="info-box">
+        <h1>Welcome</h1>
+        <p>जैसा कि आप जानते हैं, जीवन में धम्म के सिद्धांतों को अपनाना आसान नहीं होता। हर किसी का अनुभव अलग होता है, और यही अनुभव हमें समझने और सीखने में मदद कर सकता है।
+
+हम एक छोटे और सरल सर्वेक्षण कर रहे हैं, ताकि यह जान सकें कि लोग इन सिद्धांतों को अपने रोज़मर्रा के जीवन में कैसे लागू करते हैं।
+
+✅ सिर्फ ५-६ आसान सवाल हैं – केवल टिक करना है।
+✅ किसी लॉगिन या साइन-इन की जरूरत नहीं।
+✅ आपका समय लगभग २-३ मिनट ही लगेगा।</p>
+        <button class="btn" onclick="showForm()">Fill Form</button>
+    </div>
+</div>
+
+<!-- FORM SECTION -->
+<div class="form-section" id="formSection">
+   <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc9yL9lbRLFWxtD5wqE0mTSTk0M4nFi1D_41T59QrhWaMlYeA/viewform?embedded=true" width="640" height="2454" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <button class="btn" onclick="showSecondImage()" style="margin-top:20px;">I Submitted</button>
+</div>
+
+<!-- SECOND IMAGE -->
+<!-- SECOND IMAGE -->
+<!-- SECOND IMAGE -->
+<div id="secondImageContainer" style="position: relative; display: none; height: 100vh; width: 100vw; overflow: hidden;">
+    <img src="buddha2.jpg" id="secondImage" style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        animation: fadeIn 1.5s ease forwards;
+        z-index: 1;
+    ">
+    <div class="thank-you-box">
+        <h1>धन्यवाद!</h1>
+        <p>आपका फॉर्म सफलतापूर्वक जमा हो गया है। हम शीघ्र ही आपसे संपर्क करेंगे।</p>
+    </div>
+</div>
+
+<script>
+
+function showForm() {
+    document.getElementById("introSection").style.opacity = "0";
+    setTimeout(() => {
+        document.getElementById("introSection").style.display = "none";
+        document.getElementById("formSection").style.display = "flex";
+    }, 800);
+}
+
+function showSecondImage() {
+    document.getElementById("formSection").style.display = "none";
+    document.getElementById("secondImageContainer").style.display = "block";
+}
+
+
+</script>
+
+</body>
+</html>
